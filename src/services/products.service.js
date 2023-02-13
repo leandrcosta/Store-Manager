@@ -15,8 +15,16 @@ const createProduct = async (name) => {
   return newProduct;
 };
 
+const updateProduct = async ({ name, id }) => {
+  await productsModel.updateProduct({ name, id }); // Informações que quero atualizar
+  const updatedId = await productsModel.findProductId(id); // Verificando se o /id existe no banco
+  if (!updatedId) return { type: 404, message: 'Product not found' };
+  return { message: updatedId };
+};
+
 module.exports = {
   getProductAll,
   findProductId,
   createProduct,
+  updateProduct,
 };

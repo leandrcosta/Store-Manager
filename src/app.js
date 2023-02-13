@@ -1,6 +1,6 @@
 const express = require('express');
 const { productRouter } = require('./routes');
-
+// Refazendo todo o projeto - Projeto em que mudei de turma
 const app = express();
 app.use(express.json());
 app.use('/products', productRouter);

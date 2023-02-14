@@ -1,9 +1,10 @@
 const express = require('express');
-const { productRouter } = require('./routes');
+const { productRouter, salesRouter } = require('./routes');
 // Refazendo todo o projeto - Projeto em que mudei de turma
 const app = express();
 app.use(express.json());
 app.use('/products', productRouter);
+app.use('/sales', salesRouter);
 
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {

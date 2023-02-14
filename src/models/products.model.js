@@ -41,6 +41,14 @@ const removeProduct = async (id) => {
   );
   return delectedProduct;
 };
+// Sobre LIKE: https://blog.betrybe.com/sql/sql-like/
+const searchProductName = async (name) => {
+  const [nameProduct] = await connection.execute(
+    'SELECT * FROM StoreManager.products WHERE name LIKE ? ',
+    [`%${name}%`],
+  );
+  return nameProduct;
+};
 
 module.exports = {
   getAllProducts,
@@ -48,4 +56,5 @@ module.exports = {
   creatProduct,
   updateProduct,
   removeProduct,
+  searchProductName,
 };

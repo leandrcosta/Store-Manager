@@ -27,10 +27,17 @@ const removeProduct = async (productId) => {
   if (delectedProduct) return { type: null, message: '' }; // Dica da aula ao vivo
 };
 
+const searchProductName = async (q) => {
+  const searchName = await productsModel.getAllProducts(); // retorna todos os produtos que tenham "q"
+  return searchName.filter(({ name }) =>
+    name.toLowerCase().includes(q.toLowerCase()));
+};
+
 module.exports = {
   getProductAll,
   findProductId,
   createProduct,
   updateProduct,
   removeProduct,
+  searchProductName,
 };

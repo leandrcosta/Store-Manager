@@ -36,10 +36,17 @@ const removeProduct = async (req, res) => {
   return res.status(204).end();
 };
 
+const searchProductName = async (req, res) => {
+  const { q } = req.query;
+  const resultSearchNameProduct = await productService.searchProductName(q);
+  return res.status(200).json(resultSearchNameProduct);
+};
+
 module.exports = {
   getAllProducts,
   findProductId,
   createProduct,
   updateProduct,
   removeProduct,
+  searchProductName,
 };

@@ -44,7 +44,7 @@ const removeProduct = async (id) => {
 // Sobre LIKE: https://blog.betrybe.com/sql/sql-like/
 const searchProductName = async (name) => {
   const [nameProduct] = await connection.execute(
-    'SELECT * FROM StoreManager.products WHERE name LIKE ? ',
+    'SELECT * FROM StoreManager.products WHERE products.name LIKE ? ',
     [`%${name}%`],
   );
   return nameProduct;

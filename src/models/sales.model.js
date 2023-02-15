@@ -25,6 +25,7 @@ const getSaleById = async (id) => {
   );
   return camelize(saleId);
 };
+
 module.exports = {
   getAllSales,
   getSaleById,

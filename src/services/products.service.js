@@ -28,8 +28,8 @@ const removeProduct = async (productId) => {
 };
 
 const searchProductName = async (q) => {
-  const searchName = await productsModel.getAllProducts(); // retorna todos os produtos que tenham "q"
-  return searchName.filter(({ name }) =>
+  const productName = await productsModel.searchProductName(); // retorna todos os produtos que tenham "q"
+  return productName.filter(({ name }) =>
     name.toLowerCase().includes(q.toLowerCase()));
 };
 

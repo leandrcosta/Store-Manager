@@ -26,7 +26,25 @@ const getSaleById = async (id) => {
   return camelize(saleId);
 };
 
+const createSales = async (arrayProducts) => {
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO StoreManager.sales (date) VALUE (NOW())',
+  );
+  const products = arrayProducts
+    .map(
+      ({ productId, quantity }) => `(${insertId}, ${productId}, ${quantity})`,
+    )
+    .join(', ');
+  await connection.execute(
+    `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) 
+    VALUE ${products}`,
+  );
+  console.log(insertId);
+  return insertId;
+};
+
 module.exports = {
   getAllSales,
   getSaleById,
+  createSales,
 };

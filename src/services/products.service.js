@@ -27,12 +27,10 @@ const removeProduct = async (productId) => {
   if (delectedProduct) return { type: null, message: '' }; // Dica da aula ao vivo
 };
 
-const searchProductName = async (q) => {
-  const productName = await productsModel.searchProductName(); // retorna todos os produtos que tenham "q"
-  return productName.filter(({ name }) =>
-    name.toLowerCase().includes(q.toLowerCase()));
+const searchProductName = async (name) => {
+  const productName = await productsModel.searchProductName(name);
+  return productName;
 };
-
 module.exports = {
   getProductAll,
   findProductId,

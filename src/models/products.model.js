@@ -1,4 +1,5 @@
 const connection = require('./connection');
+
 // Buscar todos os produtos
 const getAllProducts = async () => {
   const [result] = await connection.execute(
@@ -44,7 +45,7 @@ const removeProduct = async (id) => {
 // Sobre LIKE: https://blog.betrybe.com/sql/sql-like/
 const searchProductName = async (name) => {
   const [nameProduct] = await connection.execute(
-    'SELECT * FROM StoreManager.products WHERE products.name LIKE ? ',
+    'SELECT * FROM StoreManager.products WHERE name LIKE ?',
     [`%${name}%`],
   );
   return nameProduct;
